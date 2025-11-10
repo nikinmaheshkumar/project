@@ -1,24 +1,24 @@
 from collections import deque
-
-def water_jug(jug1,jub2,target):
-    visited = set()
-    q = deque()
-    q.append((0,0,[]))
-
+def water_jug_bfs(j1, j2, target):
+    q = deque([((0,0),[])])
+    seen = set()
     while q:
-        x,y,steps = q.popleft()
-        if (x,y) in visited:
-            continue
-        visited.add((x,y))
-        steps.append((x,y))
+        (x,y), path = q.popleft()
+        if (x,y) in seen: continue
+        seen.add((x,y)); path = path+[(x,y)]
+        if x==target or y==target:
+            return path
+        nxt = [
+            (j1,y), (x,j2), (0,y), (x,0),
+            (min(j1,x+y), max(0,x+y-j1)),
+            (max(0,x+y-j2), min(j2,x+y))
+        ]
+        for s in nxt:
+            if s not in seen: q.append((s, path))
+    return None
+def main():
+    path = water_jug_bfs(4, 3, 2)
+    print("Path:", path)
 
-        if x == target or y == target:
-            for idx, (a,b) in enumerate(steps):
-                print(f"Step {idx}: Jug1 = {a}L, Jug2 = {b}L")
-            print("done")
-            return steps
-
-        next_states = [
-                ((jug1,y),"Fill Jug1"),
-
-
+if __name__ == '__main__':
+    main()

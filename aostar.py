@@ -14,7 +14,6 @@ def ao_star(graph, h, node):
             min_cost = total_cost
             min_path = [node] + sub_paths
     return min_cost, min_path
-
 graph_ao = {
     'A': [(2, ['B']), (4, ['C', 'D'])],
     'B': [],
@@ -23,6 +22,5 @@ graph_ao = {
     'E': [],
 }
 h_ao = {'A': 3, 'B': 0, 'C': 2, 'D': 0, 'E': 0}
-
 cost, path = ao_star(graph_ao, h_ao, 'A')
 print(f"AO* path: {path}, cost: {cost}")
