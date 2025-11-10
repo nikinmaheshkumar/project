@@ -1,6 +1,8 @@
 from queue import PriorityQueue
 def astar(graph, start, goal, h):
-    pq=PriorityQueue(); pq.put((h[start],0,start,[start])); seen=set()
+    pq=PriorityQueue() 
+    pq.put((h[start],0,start,[start]))
+    seen=set()
     while not pq.empty():
         f,g,node,path = pq.get()
         if node==goal: return path,g

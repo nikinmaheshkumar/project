@@ -9,7 +9,6 @@ def solve_n_queens(n):
             if safe(r,c):
                 board[r] = c
                 backtrack(r+1)
-
     backtrack(0)
     return solutions
 def print_solutions(solutions):

@@ -5,7 +5,8 @@ def water_jug_bfs(j1, j2, target):
     while q:
         (x,y), path = q.popleft()
         if (x,y) in seen: continue
-        seen.add((x,y)); path = path+[(x,y)]
+        seen.add((x,y))
+        path = path+[(x,y)]
         if x==target or y==target:
             return path
         nxt = [
